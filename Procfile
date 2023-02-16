@@ -1,1 +1,1 @@
-worker: poetry run task bot
+worker: python -m venkatesh
