@@ -1,1 +1,1 @@
-worker: python -m venkatesh
+worker: python venkatesh
