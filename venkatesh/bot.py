@@ -30,6 +30,7 @@ class Bot(commands.Bot):
                 users=True,
                 replied_user=True,
             ),
+            reload=True,
         )
 
         self.initiated = False
