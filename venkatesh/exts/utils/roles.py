@@ -30,13 +30,31 @@ class DepartmentRoles(commands.Cog):
             components=[
                 Button(
                     label="Register", style=ButtonStyle.success, custom_id="reg_button"
-                )
+                ),
+                Button(
+                    label="Join as Guest", style=ButtonStyle.gray, custom_id="reg_guest"
+                ),
             ],
         )
 
     @commands.Cog.listener()
     async def on_button_click(self, inter: MessageInteraction) -> None:
         """Handles modal interaction for registration."""
+        if inter.component.custom_id == "reg_guest":
+            guest = inter.guild.get_role(Roles.guest)
+            if guest in inter.user.roles:
+                await inter.user.remove_roles(
+                    guest, reason="Member removed from guest list"
+                )
+                return await inter.response.send_message(
+                    "Your guest role has been removed.", ephemeral=True
+                )
+            else:
+                await inter.user.add_roles(guest, reason="Member joined as guest")
+                return await inter.response.send_message(
+                    "You have joined as a guest.", ephemeral=True
+                )
+
         if inter.component.custom_id != "reg_button":
             return
 
