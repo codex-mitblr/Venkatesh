@@ -43,7 +43,7 @@ class JoinLeaveLog(commands.Cog):
 
         embed.set_author(
             name="Team CodeX",
-            icon_url="https://codex.mitb.club/brand.png",
+            icon_url="https://codex.mitb.club/brand_enlarged.png",
         )
         embed.set_thumbnail(url=member.display_avatar.url)
         embed.set_footer(text=footer)
