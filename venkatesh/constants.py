@@ -21,7 +21,14 @@ if TEST_GUILDS := os.getenv("TEST_GUILDS"):
 
 class Channels(NamedTuple):
     log = int(os.getenv("CHANNEL_LOG", 1035618172402925659))
-    memberlog = int(os.getenv("CHANNEL_MEMBERLOG", 1035619429658132532))
+    memberlog = int(os.getenv("CHANNEL_MEMBERLOG", 1035612105564491868))
+    rules = int(os.getenv("CHANNEL_RULES", 1035610279939166272))
+
+
+class Colors(NamedTuple):
+    green = 0x5B9877
+    orange = 0xD67D53
+    yellow = 0xE6BD57
 
 
 class Departments(NamedTuple):
