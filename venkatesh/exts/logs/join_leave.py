@@ -56,11 +56,9 @@ class JoinLeaveLog(commands.Cog):
         await self.post_formatted_message(
             member=member,
             title=f"{member.name} Joined!",
-            description=(
-                f"{member.mention}, welcome to **CodeX**!",
-                "We hope you have a great time here. Please go through",
-                f"{(await self.bot.fetch_channel(Channels.rules)).mention} in order to proceed.",
-            ),
+            description=f"{member.mention}, welcome to **CodeX**! "
+            "We hope you have a great time here. Please go through "
+            f"{(await self.bot.fetch_channel(Channels.rules)).mention} in order to proceed.",
             footer=f"{member.guild.member_count} Members",
         )
 
