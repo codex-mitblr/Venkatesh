@@ -86,7 +86,7 @@ class DepartmentRoles(commands.Cog):
             return
 
         embed = Embed(
-            title="Member Registration",
+            title=f"Member Registration ({inter.user.id})",
             timestamp=datetime.now(),
         ).set_thumbnail(url=inter.user.display_avatar.url)
 
