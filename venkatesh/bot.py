@@ -2,7 +2,7 @@ import asyncio
 import os
 from datetime import datetime
 
-from disnake import AllowedMentions, Embed, Intents
+from disnake import Activity, ActivityType, AllowedMentions, Embed, Intents, Status
 from disnake.ext import commands
 
 from . import constants
@@ -24,13 +24,14 @@ class Bot(commands.Bot):
         super().__init__(
             command_prefix=constants.PREFIX,
             intents=intents,
+            status=Status.idle,
+            activity=Activity(type=ActivityType.watching, name="over CodeX."),
             test_guilds=test_guilds,
             allowed_mentions=AllowedMentions(
                 everyone=None,
                 users=True,
                 replied_user=True,
             ),
-            reload=True,
         )
 
         self.initiated = False
@@ -67,6 +68,7 @@ class Bot(commands.Bot):
         embed = Embed(
             title="Bot Startup",
             description="The bot is back online!",
+            color=constants.Colors.green,
             timestamp=datetime.now(),
         )
         await self.get_channel(constants.Channels.log).send(embed=embed)
