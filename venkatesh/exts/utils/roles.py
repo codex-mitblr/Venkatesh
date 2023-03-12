@@ -95,6 +95,11 @@ class DepartmentRoles(commands.Cog):
                     "Your guest role has been removed.", ephemeral=True
                 )
 
+        if inter.component.custom_id == "reg_guest":
+            return await inter.response.send_message(
+                "You have been registered as a guest!", ephemeral=True
+            )
+
         member = inter.guild.get_role(Roles.member)
         if member in inter.user.roles:
             return await inter.response.send_message(
