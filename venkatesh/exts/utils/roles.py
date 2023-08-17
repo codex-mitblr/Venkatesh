@@ -83,22 +83,7 @@ class DepartmentRoles(commands.Cog):
     @commands.Cog.listener()
     async def on_button_click(self, inter: MessageInteraction) -> None:
         """Handles modal interaction for registration."""
-        if inter.component.custom_id == "reg_guest":
-            guest = inter.guild.get_role(Roles.guest)
-            if guest in inter.user.roles:
-                await inter.user.remove_roles(
-                    guest, reason="Member removed from guest list"
-                )
-                return await inter.response.send_message(
-                    "Your guest role has been removed.", ephemeral=True
-                )
-        else:
-                await inter.user.add_roles(guest, reason="Member joined as guest")
-                return await inter.response.send_message(
-                    "You have joined as a guest.", ephemeral=True
-                )
-
-        if inter.component.custom_id != "reg_button":
+        if inter.component.custom_id not in ["reg_button", "reg_guest"]:
             return
 
         member = inter.guild.get_role(Roles.member)
@@ -106,6 +91,20 @@ class DepartmentRoles(commands.Cog):
             return await inter.response.send_message(
                 "You are already registered. Use `/departments` at any time to choose your departments!",
                 ephemeral=True,
+            )
+
+        guest = inter.guild.get_role(Roles.guest)
+        if guest in inter.user.roles:
+            await inter.user.remove_roles(guest)
+            if inter.component.custom_id == "reg_guest":
+                return await inter.response.send_message(
+                    "Your guest role has been removed.", ephemeral=True
+                )
+
+        if inter.component.custom_id == "reg_guest":
+            await inter.user.add_roles(guest)
+            return await inter.response.send_message(
+                "You have been registered as a guest!", ephemeral=True
             )
 
         await inter.response.send_modal(
