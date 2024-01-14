@@ -47,4 +47,4 @@ class Departments(NamedTuple):
 class Roles(NamedTuple):
     moderator = int(os.getenv("ROLE_MODERATOR", 1037793218756104292))
     guest = int(os.getenv("ROLE_GUEST", 1047567918147321886))
-    member = int(os.getenv("ROLE_GUEST", 1035616682317729792))
+    member = int(os.getenv("ROLE_MEMBER", 1035616682317729792))
