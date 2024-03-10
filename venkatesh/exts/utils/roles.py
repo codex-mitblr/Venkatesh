@@ -200,11 +200,6 @@ class DepartmentRoles(commands.Cog):
                             emoji="\N{VIDEO GAME}",
                         ),
                         SelectOption(
-                            label="CXOS - Open-Source Development",
-                            value=Departments.cxos,
-                            emoji="\N{DESKTOP COMPUTER}",
-                        ),
-                        SelectOption(
                             label="CXCP - Competitive Programming",
                             value=Departments.cxcp,
                             emoji="\N{CHEQUERED FLAG}",
@@ -218,11 +213,6 @@ class DepartmentRoles(commands.Cog):
                             label="CXAD - App Development",
                             value=Departments.cxad,
                             emoji="\N{MOBILE PHONE}",
-                        ),
-                        SelectOption(
-                            label="CXNAT - New Age Technologies",
-                            value=Departments.cxnat,
-                            emoji="\N{COIN}",
                         ),
                         SelectOption(
                             label="CXDS - Data Science",
